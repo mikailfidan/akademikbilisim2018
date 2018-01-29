@@ -4,9 +4,12 @@ from election.profile.models import UserProfile
 
 
 def home(request):
-
+      if request.method=="POST":
         profile = request.user.email
-        return  render(request, 'index.html', {'profile':profile})
+        return render(request, 'index.html', {'profile':profile})
+
+      else:
+          return render(request,'index.html')
 
 
 def login_error(request):
