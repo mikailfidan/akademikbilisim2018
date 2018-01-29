@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="starter-template">
+
+
+<div class="alert alert-warning">
+{{hata}}
+{{hatapasswd}}
+{{scs}}
+</div>
+
+    </div>
+
+
+
+     <form action="/signup_view/" method="post" class="col-md-3">
+              <p class="lead">
+                <h1>SIGNUP </h1>
+              </p>
+
+            {% csrf_token %}
+
+            <input name="name" type="text" class="form-control" placeholder="Enter Name">
+            <input name="email" type="text" class="form-control" placeholder="Enter Email">
+            <input name="password"  type="password" class="form-control"  placeholder="Enter Password">
+            <input name="password-verify"  type="password" class="form-control"  placeholder="Enter Password (Verify)">
+<br>
+
+           <input class="btn btn-primary" type="submit" value="Gönder">
+
+        </form>
+
+
+
+</div>
+{% endblock %}
