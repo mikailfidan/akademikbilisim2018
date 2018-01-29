@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="starter-template">
+
+        <h1>Login Page</h1>
+        <p class="lead">
+
+        </p>
+
+    </div>
+
+
+
+        <form action="login_view" method="post" class="">
+            {% csrf_token %}
+
+            <input name="email" type="text" class="form-control" placeholder="Enter Name">
+
+
+            <input name="password"  type="password" class="form-control"  placeholder="Enter email">
+
+
+           <input class="btn btn-primary" type="submit" value="Gönder">
+
+        </form>
+
+
+
+</div>
+{% endblock %}
