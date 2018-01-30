@@ -13,6 +13,12 @@ class City(models.Model):
     def __str__(self):
         return str(self.name)
 
+
+
+
+
+
+
 class Town(models.Model):
     name = models.CharField('İlçe Adı', max_length=200)
     city = models.ForeignKey(City, null=True, blank=True)
