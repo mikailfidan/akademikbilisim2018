@@ -2,7 +2,7 @@ from django.contrib import  admin
 from election.profile.models import UserProfile, City, Town
 
 class UserProfileAdmin (admin.ModelAdmin):
-    list_display = ('name', 'email', 'created_at',)
+    list_display = ('email','name', 'created_at',)
 
 
 

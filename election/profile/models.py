@@ -65,10 +65,10 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         ordering = ('created_at',)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.email)
 
     def get_full_name(self):
-        return self.name
+        return self.email
 
     def get_short_name(self):
-        return self.name
+        return self.email
