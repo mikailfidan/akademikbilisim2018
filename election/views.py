@@ -1,15 +1,13 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from election.profile.models import UserProfile
+from election.models import Survey
 
 
 def home(request):
-      if request.method=="POST":
-        profile = request.user.email
-        return render(request, 'index.html', {'profile':profile})
 
-      else:
-          return render(request,'index.html')
+     items=Survey.objects.all()
+     return render(request,'index.html', {'items':items})
 
 
 def login_error(request):

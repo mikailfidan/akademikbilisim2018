@@ -1,6 +1,5 @@
 from django.contrib import admin
 from election.models import Survey, Category
-#from election.models import Category
 from import_export import resources
 from import_export.admin import ImportExportMixin
 

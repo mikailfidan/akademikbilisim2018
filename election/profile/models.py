@@ -2,6 +2,30 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
+class City(models.Model):
+    name = models.CharField('Şehir Adı', max_length=200)
+    code = models.IntegerField('Plaka Kodu', max_length=5)
+
+    class Meta:
+        verbose_name = 'Şehir'
+        verbose_name_plural = 'Şehirler'
+
+    def __str__(self):
+        return str(self.name)
+
+class Town(models.Model):
+    name = models.CharField('İlçe Adı', max_length=200)
+    city = models.ForeignKey(City, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'İlçe'
+        verbose_name_plural = 'İlçeler'
+
+    def __str__(self):
+        return str(self.name)
+
+
+
 class UserProfileManager(BaseUserManager):
     use_in_migrations = True
 
@@ -26,6 +50,7 @@ class UserProfileManager(BaseUserManager):
 class UserProfile(AbstractBaseUser, PermissionsMixin):
     name = models.CharField('İsim', max_length=100)
     email = models.EmailField('E-Posta', max_length=100, unique=True)
+    town=models.ForeignKey(Town, null=True, blank=True)
     is_active = models.BooleanField("E-posta Onayı?", null=False, blank=False, default=False)
     is_staff = models.BooleanField("Staff?", null=False, blank=False, default=False)
     is_superuser = models.BooleanField("Superuser?", null=False, blank=False, default=False)
@@ -40,7 +65,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         ordering = ('created_at',)
 
     def __str__(self):
-        return str(self.email)
+        return str(self.name)
 
     def get_full_name(self):
         return self.name
